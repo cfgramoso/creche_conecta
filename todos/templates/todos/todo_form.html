@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    {% if todo.pk %}
+      Editar Cadastro
+    {% else %}
+      Novo Cadastro
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+
+    {% if todo.pk %}
+      <h1> Editar Cadastro </h1>
+    {% else %}
+      <h1> Novo Cadastro </h1>
+    {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type=submit class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock content %}
