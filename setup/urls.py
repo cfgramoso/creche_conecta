@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
 
 from todos.views import (
     TodoListView,
@@ -16,4 +17,5 @@ urlpatterns = [
     path("update/<int:pk>", TodoUpdateView.as_view(), name="todo_update"),
     path("delete/<int:pk>", TodoDeleteView.as_view(), name="todo_delete"),
     path("complete/<int:pk>", TodoCompleteView.as_view(), name="todo_complete"),
+    path('', RedirectView.as_view(url='/', permanent=True)),
 ]
